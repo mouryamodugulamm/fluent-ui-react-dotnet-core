@@ -12,6 +12,7 @@ import {
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useHistory, useLocation, Link as RouterLink } from "react-router-dom";
+import apiClient from "../../../services/apiClient";
 import { ThemeToggle } from "../../molecules/ThemeToggle";
 import { useAuthentication } from "../../util/authentication";
 
@@ -30,7 +31,7 @@ const demoUsers = [
 
 const getClassNames = classNamesFunction();
 
-function LoginForm({ theme, styles }) {
+function Register({ theme, styles }) {
   const { isAuthenticated, principal, login, logout } = useAuthentication();
   const { handleSubmit, control, errors } = useForm();
   const [error, setError] = React.useState();
@@ -66,7 +67,7 @@ function LoginForm({ theme, styles }) {
           <Stack horizontal horizontalAlign="end" verticalAlign="center">
             <ThemeToggle as={DefaultButton} />
           </Stack>
-          <h3 className={classNames.title}>Login</h3>
+          <h3 className={classNames.title}>Register</h3>
           <Stack
             tokens={{
               childrenGap: "1em",
@@ -117,16 +118,37 @@ function LoginForm({ theme, styles }) {
               }}
             />
 
+            <Controller
+              as={
+                <TextField
+                  label="Confirm Password"
+                  type="password"
+                  autoComplete="current-password"
+                  errorMessage={getErrorMessage("password")}
+                />
+              }
+              name="confirmPassword"
+              control={control}
+              defaultValue=""
+              minLength={4}
+              maxLength={64}
+              rules={{
+                required: "Please re-type password",
+                minLength: {
+                  value: 4,
+                  message: "Please enter your password",
+                },
+                maxLength: { value: 64, message: "Password is too long" },
+              }}
+            />
+
             <Stack
               horizontal
               horizontalAlign="end"
               tokens={{ childrenGap: "1em" }}
             >
-              <Link>Find my password</Link>
-              <PrimaryButton type="submit">Login</PrimaryButton>
-            </Stack>
-            <Stack horizontalAlign="end">
-              <RouterLink to="/register">Dont have an account?</RouterLink>
+              <RouterLink to="/login">Already had an account?</RouterLink>
+              <PrimaryButton type="submit">Register</PrimaryButton>
             </Stack>
             {error && (
               <MessageBar
@@ -146,8 +168,8 @@ function LoginForm({ theme, styles }) {
     setError(null);
     remoteAuthService(values)
       .then((identity) => {
-        login(identity);
-        history.replace(from);
+        // login(identity);
+        // history.replace(from);
       })
       .catch(setError);
   }
@@ -157,22 +179,19 @@ function LoginForm({ theme, styles }) {
   }
 }
 
-function remoteAuthService({ username, password }) {
-  const found = demoUsers.find(
-    (user) => username.toLocaleLowerCase() === user.username
-  );
+const remoteAuthService = async (values) => {
+  console.log(values);
 
-  if (found?.password === password) {
-    return Promise.resolve({
-      username: found.username,
-      token: username + "_" + Math.random(),
-      displayName: found.displayName,
-      roles: found.roles,
-    });
-  } else {
-    return Promise.reject("Incorrect username or password");
-  }
-}
+  const result = await apiClient.post("/Account/Register", {
+    eMail: values.username,
+    fullName: values.username,
+    password: values.password,
+    confirmPassword: values.confirmPassword,
+  });
+
+  console.log(result.data);
+  console.log(result.status);
+};
 
 function getStyles({ theme }) {
   return {
@@ -190,4 +209,4 @@ function getStyles({ theme }) {
   };
 }
 
-export default styled(LoginForm, getStyles);
+export default styled(Register, getStyles);
