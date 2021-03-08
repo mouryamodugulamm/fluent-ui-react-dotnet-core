@@ -8,23 +8,23 @@ import {
   Stack,
   styled,
   TextField,
-} from '@fluentui/react';
-import React from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { useHistory, useLocation } from 'react-router-dom';
-import { ThemeToggle } from '../../molecules/ThemeToggle';
-import { useAuthentication } from '../../util/authentication';
+} from "@fluentui/react";
+import React from "react";
+import { Controller, useForm } from "react-hook-form";
+import { useHistory, useLocation, Link as RouterLink } from "react-router-dom";
+import { ThemeToggle } from "./../../components/molecules/ThemeToggle";
+import { useAuthentication } from "./../../components/util/authentication";
 
 const demoUsers = [
   {
-    username: 'admin',
-    password: 'admin',
-    roles: ['admin'],
+    username: "admin",
+    password: "admin",
+    roles: ["admin"],
   },
   {
-    username: 'demo',
-    password: 'demo',
-    roles: ['user'],
+    username: "demo",
+    password: "demo",
+    roles: ["user"],
   },
 ];
 
@@ -37,23 +37,24 @@ function LoginForm({ theme, styles }) {
   const history = useHistory();
   const location = useLocation();
 
-  const from = location.state?.from || { pathname: '/' };
+  const from = location.state?.from || { pathname: "/" };
   const classNames = getClassNames(styles, { theme });
 
   return (
     <Stack className={classNames.root}>
       {isAuthenticated && (
-        <Stack tokens={{ childrenGap: '1em' }}>
+        <Stack tokens={{ childrenGap: "1em" }}>
           <h3 className={classNames.title}>
             {principal.username}, you are already signed in.
           </h3>
-          <Stack horizontal tokens={{ childrenGap: '1em' }}>
+          <Stack horizontal tokens={{ childrenGap: "1em" }}>
             <PrimaryButton
-              onClick={() => history.push('/')}
-              iconProps={{ iconName: 'Home' }}>
+              onClick={() => history.push("/")}
+              iconProps={{ iconName: "Home" }}
+            >
               Go to Home
             </PrimaryButton>
-            <DefaultButton onClick={logout} iconProps={{ iconName: 'SignOut' }}>
+            <DefaultButton onClick={logout} iconProps={{ iconName: "SignOut" }}>
               Logout
             </DefaultButton>
           </Stack>
@@ -68,26 +69,27 @@ function LoginForm({ theme, styles }) {
           <h3 className={classNames.title}>Login</h3>
           <Stack
             tokens={{
-              childrenGap: '1em',
-            }}>
+              childrenGap: "1em",
+            }}
+          >
             <Controller
               as={TextField}
               control={control}
               label="Username"
               autoComplete="username"
-              errorMessage={getErrorMessage('username')}
+              errorMessage={getErrorMessage("username")}
               autoFocus
               minLength={3}
               maxLength={32}
               defaultValue=""
               name="username"
               rules={{
-                required: 'Please enter your username',
+                required: "Please enter your username",
                 minLength: {
                   value: 3,
-                  message: 'Please enter your username',
+                  message: "Please enter your username",
                 },
-                maxLength: { value: 32, message: 'Username is too long' },
+                maxLength: { value: 32, message: "Username is too long" },
               }}
             />
 
@@ -97,7 +99,7 @@ function LoginForm({ theme, styles }) {
                   label="Password"
                   type="password"
                   autoComplete="current-password"
-                  errorMessage={getErrorMessage('password')}
+                  errorMessage={getErrorMessage("password")}
                 />
               }
               name="password"
@@ -106,26 +108,31 @@ function LoginForm({ theme, styles }) {
               minLength={4}
               maxLength={64}
               rules={{
-                required: 'Please enter your password',
+                required: "Please enter your password",
                 minLength: {
                   value: 4,
-                  message: 'Please enter your password',
+                  message: "Please enter your password",
                 },
-                maxLength: { value: 64, message: 'Password is too long' },
+                maxLength: { value: 64, message: "Password is too long" },
               }}
             />
 
             <Stack
               horizontal
               horizontalAlign="end"
-              tokens={{ childrenGap: '1em' }}>
+              tokens={{ childrenGap: "1em" }}
+            >
               <Link>Find my password</Link>
               <PrimaryButton type="submit">Login</PrimaryButton>
+            </Stack>
+            <Stack horizontalAlign="end">
+              <RouterLink to="/register">Dont have an account?</RouterLink>
             </Stack>
             {error && (
               <MessageBar
                 messageBarType={MessageBarType.error}
-                onDismiss={() => setError(null)}>
+                onDismiss={() => setError(null)}
+              >
                 {error}
               </MessageBar>
             )}
@@ -158,20 +165,20 @@ function remoteAuthService({ username, password }) {
   if (found?.password === password) {
     return Promise.resolve({
       username: found.username,
-      token: username + '_' + Math.random(),
+      token: username + "_" + Math.random(),
       displayName: found.displayName,
       roles: found.roles,
     });
   } else {
-    return Promise.reject('Incorrect username or password');
+    return Promise.reject("Incorrect username or password");
   }
 }
 
 function getStyles({ theme }) {
   return {
     root: {
-      margin: '10em auto',
-      width: '30em',
+      margin: "10em auto",
+      width: "30em",
       backgroundColor: theme.palette.neutralLighter,
       padding: theme.spacing.l2,
       borderRadius: theme.effects.roundedCorner2,
