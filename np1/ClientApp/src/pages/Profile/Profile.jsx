@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Persona, Pivot, PivotItem, Stack, Text } from "@fluentui/react";
 import ProfileStyles, { ProfileTokens } from "./styles/Profile.Styles";
 import Personal from "./Personal";
+import Notifications from "./Notifications";
 import { TestImages } from "@uifabric/example-data";
 
 const Profile = () => {
@@ -37,7 +38,9 @@ const Profile = () => {
               <Personal />
             </PivotItem>
             <PivotItem headerText="Interests">Interests</PivotItem>
-            <PivotItem headerText="Notifications">Notifications</PivotItem>
+            <PivotItem headerText="Notifications">
+              <Notifications />
+            </PivotItem>
           </Pivot>
         </Stack.Item>
       </Stack>
