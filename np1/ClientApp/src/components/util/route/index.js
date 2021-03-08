@@ -1,6 +1,6 @@
-export * from '../../pages/ComingSoon/ComingSoon';
-export * from '../../pages/NoMatch/NoMatch';
-export * from './RouteIndex';
+export * from "./../../../pages/ComingSoon";
+export * from "./../../../pages/NoMatch/NoMatch";
+export * from "./RouteIndex";
 
-export * from './renderRoutes';
-export * from './AuthorizedRoute';
+export * from "./renderRoutes";
+export * from "./AuthorizedRoute";

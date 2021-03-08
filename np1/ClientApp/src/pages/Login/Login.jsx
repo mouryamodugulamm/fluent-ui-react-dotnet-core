@@ -12,8 +12,8 @@ import {
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useHistory, useLocation, Link as RouterLink } from "react-router-dom";
-import { ThemeToggle } from "../../molecules/ThemeToggle";
-import { useAuthentication } from "../../util/authentication";
+import { ThemeToggle } from "./../../components/molecules/ThemeToggle";
+import { useAuthentication } from "./../../components/util/authentication";
 
 const demoUsers = [
   {

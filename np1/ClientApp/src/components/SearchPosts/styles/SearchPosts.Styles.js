@@ -1,12 +1,9 @@
-import { DefaultEffects, FontWeights, mergeStyleSets } from "@fluentui/react";
+import { FontWeights, mergeStyleSets } from "office-ui-fabric-react";
 
-const CardStyles = mergeStyleSets({
-  maxWidth: {
-    maxWidth: 300,
-    padding: 15,
-    marginBottom: 15,
-    boxShadow: DefaultEffects.elevation4,
-  },
+const SearchPostsStyles = mergeStyleSets({
+  searchBox: { maxWidth: 300, padding: 15, marginBottom: 15 },
+  detailList: { maxWidth: 900, padding: 15, marginBottom: 15 },
+
   siteText: {
     color: "#025F52",
     fontSize: 12,
@@ -29,7 +26,7 @@ const CardStyles = mergeStyleSets({
   },
 });
 
-const CardTokens = {
+const SearchPostsTokens = {
   cardStak: {
     childrenGap: 15,
   },
@@ -42,6 +39,6 @@ const CardTokens = {
   },
 };
 
-export default CardStyles;
+export default SearchPostsStyles;
 
-export { CardTokens };
+export { SearchPostsTokens };

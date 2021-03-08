@@ -1,7 +1,6 @@
 import {
   classNamesFunction,
   DefaultButton,
-  Link,
   MessageBar,
   MessageBarType,
   PrimaryButton,
@@ -11,34 +10,19 @@ import {
 } from "@fluentui/react";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useHistory, useLocation, Link as RouterLink } from "react-router-dom";
-import apiClient from "../../../services/apiClient";
-import { ThemeToggle } from "../../molecules/ThemeToggle";
-import { useAuthentication } from "../../util/authentication";
-
-const demoUsers = [
-  {
-    username: "admin",
-    password: "admin",
-    roles: ["admin"],
-  },
-  {
-    username: "demo",
-    password: "demo",
-    roles: ["user"],
-  },
-];
+import { useHistory, Link as RouterLink } from "react-router-dom";
+import { ThemeToggle } from "./../../components/molecules/ThemeToggle";
+import { useAuthentication } from "./../../components/util/authentication";
+import apiClient from "./../../services/apiClient";
 
 const getClassNames = classNamesFunction();
 
 function Register({ theme, styles }) {
-  const { isAuthenticated, principal, login, logout } = useAuthentication();
+  const { isAuthenticated, principal, logout } = useAuthentication();
   const { handleSubmit, control, errors } = useForm();
   const [error, setError] = React.useState();
   const history = useHistory();
-  const location = useLocation();
 
-  const from = location.state?.from || { pathname: "/" };
   const classNames = getClassNames(styles, { theme });
 
   return (

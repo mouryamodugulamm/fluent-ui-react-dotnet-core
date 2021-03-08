@@ -1,10 +1,10 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import {flattenDeep, isArray, isNil} from 'lodash-es';
-import AuthorizedRoute from './AuthorizedRoute';
-import RouteIndex from './RouteIndex';
-import ComingSoon from '../../pages/ComingSoon';
-import NoMatch from '../../pages/NoMatch';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { flattenDeep, isArray, isNil } from "lodash-es";
+import AuthorizedRoute from "./AuthorizedRoute";
+import RouteIndex from "./RouteIndex";
+import ComingSoon from "./../../../pages/ComingSoon";
+import NoMatch from "./../../../pages/NoMatch";
 
 export function mapConfigToRoutes(route) {
   const isGroup = isArray(route.children);

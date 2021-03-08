@@ -26,26 +26,27 @@ const routeConfig = hierarchize(
     name: "Home",
     icon: "Home",
     path: "/",
-    component: React.lazy(() => import("./components/pages/Dashboard")),
+    component: React.lazy(() => import("./pages/Dashboard")),
     children: [
       {
         key: "login",
         name: "Login",
         isPublic: true,
         isHidden: true,
-        component: React.lazy(() => import("./components/pages/Login")),
+        component: React.lazy(() => import("./pages/Login")),
       },
       {
         key: "register",
         name: "Register",
         isPublic: true,
         isHidden: true,
-        component: React.lazy(() => import("./components/pages/Register")),
+        component: React.lazy(() => import("./pages/Register")),
       },
       {
         key: "profile",
         name: "Profile",
         isHidden: true,
+        component: React.lazy(() => import("./pages/Profile")),
       },
       {
         key: "order",
