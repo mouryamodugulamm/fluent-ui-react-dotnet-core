@@ -1,4 +1,4 @@
-import { DefaultEffects, FontWeights, mergeStyleSets } from "@fluentui/react";
+import { mergeStyleSets } from "@fluentui/react";
 
 const ListItemStyles = mergeStyleSets({
   listItem: { paddingTop: 15 },

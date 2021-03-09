@@ -4,7 +4,6 @@ import {
   Text,
   Image,
   Stack,
-  Icon,
   PersonaSize,
   IconButton,
 } from "@fluentui/react";

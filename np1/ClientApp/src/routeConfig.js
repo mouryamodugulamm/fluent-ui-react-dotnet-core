@@ -49,6 +49,12 @@ const routeConfig = hierarchize(
         component: React.lazy(() => import("./pages/Profile")),
       },
       {
+        key: "edit-profile/:userId",
+        name: "Edit Profile",
+        isHidden: true,
+        component: React.lazy(() => import("./pages/EditProfile")),
+      },
+      {
         key: "order",
         name: "Order",
         icon: "visualizeApp",

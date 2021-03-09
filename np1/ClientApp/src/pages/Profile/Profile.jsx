@@ -1,11 +1,22 @@
 import React from "react";
-import { Link, Persona, Pivot, PivotItem, Stack, Text } from "@fluentui/react";
+import {
+  IconButton,
+  Link,
+  Persona,
+  Pivot,
+  PivotItem,
+  Stack,
+  Text,
+} from "@fluentui/react";
 import ProfileStyles, { ProfileTokens } from "./styles/Profile.Styles";
 import Personal from "./Personal";
 import Notifications from "./Notifications";
 import { TestImages } from "@uifabric/example-data";
+import { useHistory } from "react-router-dom";
+import Interests from "./Interests";
 
-const Profile = () => {
+const Profile = (props) => {
+  const history = useHistory();
   return (
     <div>
       <h3>Profile</h3>
@@ -27,6 +38,14 @@ const Profile = () => {
                 </Text>
 
                 <Text variant="small">Predifast Technologies Pvt. Ltd</Text>
+                <IconButton
+                  iconProps={{ iconName: "edit" }}
+                  ariaLabel="Edit"
+                  title="Edit profile"
+                  onClick={() => {
+                    history.push("/edit-profile/mvmodugula");
+                  }}
+                />
               </Stack>
             </Stack.Item>
             <Stack.Item></Stack.Item>
@@ -37,7 +56,9 @@ const Profile = () => {
             <PivotItem headerText="Personal">
               <Personal />
             </PivotItem>
-            <PivotItem headerText="Interests">Interests</PivotItem>
+            <PivotItem headerText="Interests">
+              <Interests />
+            </PivotItem>
             <PivotItem headerText="Notifications">
               <Notifications />
             </PivotItem>
