@@ -2,29 +2,23 @@ import { mergeStyleSets } from "@fluentui/react";
 
 const ProfileStyles = mergeStyleSets({
   header: {
-    padding: 15,
+    marginTop: 15,
   },
-  headerImage: {},
-  headerDetails: {},
-  body: {
-    padding: 15,
+  footer: {
+    marginBottom: 15,
+  },
+  intrests: {
+    maxWidth: 300,
   },
 });
 
 const ProfileTokens = {
-  header: {
-    maxSize: 300,
+  horizontalChildren: {
     childrenGap: 15,
   },
 
-  sectionStack: {
+  verticalChildren: {
     childrenGap: 30,
-  },
-  detailsStack: {
-    childrenGap: 5,
-  },
-  cardFooterStack: {
-    childrenGap: 16,
   },
 };
 

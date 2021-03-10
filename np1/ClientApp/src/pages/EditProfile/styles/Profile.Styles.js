@@ -3,11 +3,16 @@ import { mergeStyleSets } from "@fluentui/react";
 const ProfileStyles = mergeStyleSets({
   header: {
     padding: 15,
+    maxSize: 30,
   },
   headerImage: {},
   headerDetails: {},
   body: {
     padding: 15,
+  },
+
+  editForm: {
+    marginBottom: 15,
   },
 });
 

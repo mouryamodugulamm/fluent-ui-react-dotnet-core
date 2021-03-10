@@ -2,10 +2,12 @@ import React from "react";
 import LikeActivity from "./../../components/LikeActivity";
 import EditActivity from "./../../components/EditActivity";
 import CommentActivity from "./../../components/CommentActivity";
+import ProfileStyles from "./styles/Profile.Styles";
+import { Stack } from "office-ui-fabric-react";
 
 const Notifications = () => {
   return (
-    <div>
+    <Stack className={ProfileStyles.header}>
       <LikeActivity
         by="@mourya"
         timeStamp="2021-03-08"
@@ -31,7 +33,7 @@ const Notifications = () => {
         actionName="edited"
         iconName="edit"
       />
-    </div>
+    </Stack>
   );
 };
 

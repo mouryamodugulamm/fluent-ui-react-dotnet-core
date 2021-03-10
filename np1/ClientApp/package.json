@@ -10,6 +10,7 @@
     "@uifabric/example-data": "^7.1.6",
     "@uifabric/theme-samples": "^7.1.36",
     "axios": "^0.21.1",
+    "formik": "^2.2.6",
     "lodash-es": "^4.17.15",
     "moment": "^2.29.1",
     "react": "^16.14.0",
@@ -18,7 +19,8 @@
     "react-hot-loader": "^4.12.21",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.4",
-    "react-use": "^15.3.4"
+    "react-use": "^15.3.4",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "upgrade-deps": "npx ncu -u && yarn && yarn upgrade",

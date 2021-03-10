@@ -1,10 +1,9 @@
-import { Separator, Stack, Text } from "@fluentui/react";
 import React from "react";
-import { ListItemTokens } from "./styles/ListItem.Styles";
+import { Separator, Stack, Text } from "@fluentui/react";
 
 const ListItem = (props) => {
   return (
-    <Stack tokens={ListItemTokens.listItemStack}>
+    <Stack>
       <Text variant="large">{props.text}</Text>
       <Text>{props.secondaryText}</Text>
       <Separator />
