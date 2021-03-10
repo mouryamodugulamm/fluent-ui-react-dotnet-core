@@ -66,21 +66,19 @@ const SearchPosts = () => {
 
   return (
     <Stack>
-      <Stack.Item className={SearchPostsStyles.searchBox}>
-        <SearchBox
-          placeholder="Search posts"
-          onSearch={(newValue) => {
-            SetIsSearached(true);
-            console.log("Searched Data is : " + newValue);
-          }}
-          onClear={() => {
-            SetIsSearached(false);
-          }}
-          onEscape={() => {
-            SetIsSearached(false);
-          }}
-        />
-      </Stack.Item>
+      <SearchBox
+        placeholder="Search posts"
+        onSearch={(newValue) => {
+          SetIsSearached(true);
+          console.log("Searched Data is : " + newValue);
+        }}
+        onClear={() => {
+          SetIsSearached(false);
+        }}
+        onEscape={() => {
+          SetIsSearached(false);
+        }}
+      />
 
       {isSearched && (
         <Stack.Item className={SearchPostsStyles.detailList}>

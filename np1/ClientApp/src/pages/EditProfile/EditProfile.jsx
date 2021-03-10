@@ -12,7 +12,6 @@ import ProfileStyles, { ProfileTokens } from "./styles/Profile.Styles";
 import { TestImages } from "@uifabric/example-data";
 import { useParams, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 
 const EditProfile = () => {
   const history = useHistory();

@@ -1,4 +1,4 @@
-import { Stack, PrimaryButton, Text, Dropdown, Icon } from "@fluentui/react";
+import { Stack, Text, Dropdown, Icon } from "@fluentui/react";
 import React from "react";
 import ProfileStyles, { ProfileTokens } from "./styles/Profile.Styles";
 import { InterestsData } from "./__mocks__/InterestsData";

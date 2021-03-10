@@ -55,6 +55,12 @@ const routeConfig = hierarchize(
         component: React.lazy(() => import("./pages/EditProfile")),
       },
       {
+        key: "post/new/job",
+        name: "Add Jobs",
+        isHidden: true,
+        component: React.lazy(() => import("./pages/NewJobPost")),
+      },
+      {
         key: "order",
         name: "Order",
         icon: "visualizeApp",
